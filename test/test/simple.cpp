@@ -28,7 +28,7 @@ int main()
     go f1;
     cout << "go" << endl;
     while (!g_Scheduler.IsEmpty()) {
-        g_Scheduler.Run();
+        g_Scheduler.Start();
     }
     cout << "end" << endl;
     return 0;

@@ -20,12 +20,12 @@ void f1()
 
 int main()
 {
-    g_Scheduler.GetOptions().debug = co::dbg_wait;
+//    g_Scheduler.GetOptions().debug = co::dbg_wait;
     g_mutex.try_lock();
     go f1;
     cout << "go" << endl;
     while (!g_Scheduler.IsEmpty()) {
-        g_Scheduler.Run();
+    	g_Scheduler.Start();
     }
     cout << "end" << endl;
     return 0;

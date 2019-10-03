@@ -47,7 +47,7 @@ int main()
     }
     printf("go\n");
     while (!g_Scheduler.IsEmpty())
-        g_Scheduler.Run();
+    	g_Scheduler.Start();
     printf("end\n");
     return 0;
 }

@@ -7,7 +7,7 @@
 using namespace std;
 
 std::atomic_int g_value{0};
-static const int co_count = 100000;
+static const int co_count = 10;
 static const int switch_per_co = 10;
 
 void f1()
@@ -22,7 +22,7 @@ void f1()
 int main()
 {
     //g_Scheduler.GetOptions().debug = dbg_all;
-    g_Scheduler.GetOptions().stack_size = 2048;
+//    g_Scheduler.getGetOptions().stack_size = 2048;
 
     for (int i = 0; i < co_count; ++i) {
         go f1;
@@ -32,7 +32,7 @@ int main()
     {
         boost::progress_timer pt;
         while (!g_Scheduler.IsEmpty()) {
-            g_Scheduler.Run();
+            g_Scheduler.Start();
         }
         printf("main thread, run %d coroutines, %d times switch. cost ", co_count, co_count * switch_per_co);
     }

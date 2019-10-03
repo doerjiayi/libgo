@@ -23,7 +23,7 @@ void foo()
 
 int main(int argc, char** argv)
 {
-    g_Scheduler.GetOptions().debug = co::dbg_syncblock;
+//    g_Scheduler.GetOptions().debug = co::dbg_syncblock;
     for (int i = 0; i < co_count; ++i)
         go foo;
     cout << "go" << endl;
@@ -34,9 +34,9 @@ int main(int argc, char** argv)
         for (int i = 0; i < thread_count; ++i)
         {
             tg.create_thread([] {
-                    uint32_t c = 0;
+            		int c = 0;
                     while (!g_Scheduler.IsEmpty()) {
-                        c += g_Scheduler.Run();
+                        g_Scheduler.Start();
                     }
                     printf("[%lu] do count: %u\n", pthread_self(), c);
                 });

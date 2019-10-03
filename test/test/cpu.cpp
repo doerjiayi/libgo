@@ -59,7 +59,7 @@ int main(int argc, char** argv)
     // 单线程执行
     boost::thread_group tg;
     for (int i = 0; i < thread_count; ++i)
-        tg.create_thread([&] { while (!is_exit) g_Scheduler.Run();} );
+        tg.create_thread([&] { while (!is_exit) g_Scheduler.Start();} );
     tg.join_all();
     return 0;
 }

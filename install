@@ -1,0 +1,40 @@
+安装libgo
+$ mkdir build
+    $ cd build
+    $ cmake ..
+$ make debug     #Skip it if you don`t want a debuggable versions.
+    $ sudo make uninstall
+    $ sudo make install
+
+安装boost
+
+在编译的centos上安装安装c 
+yum install glibc-static libstdc++-static -y
+yum groupinstall -y "Development Tools"
+yum install curl curl-devel -y
+
+下载boost_1_59_0
+
+执行bootstrap.sh
+
+先动态编译
+./b2 --without-python 
+sudo ./b2 --without-python install
+
+静态编译连接
+./b2 --without-python runtime-link=static link=static
+
+安装boost静态路
+sudo ./b2 --without-python runtime-link=static link=static install
+
+
+运行前
+ ulimit -c unlimited
+ 
+/etc/profile 添加
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
+
+source /etc/profile
+
+
+

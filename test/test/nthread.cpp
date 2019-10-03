@@ -23,7 +23,7 @@ void f1()
 int main(int argc, char** argv)
 {
 //    g_Scheduler.GetOptions().debug = dbg_all;
-    g_Scheduler.GetOptions().stack_size = 2048;
+//    g_Scheduler.GetOptions().stack_size = 2048;
 
     if (argc > 1)
         thread_count = atoi(argv[1]);
@@ -41,7 +41,7 @@ int main(int argc, char** argv)
             tg.create_thread([] {
                     uint32_t c = 0;
                     while (!g_Scheduler.IsEmpty()) {
-                        c += g_Scheduler.Run();
+                         g_Scheduler.Start();
                     }
                     printf("[%lu] do count: %u\n", pthread_self(), c);
                 });
